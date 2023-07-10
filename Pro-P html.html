@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Global Lantern News - Israel-Palestine Conflict</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      background-image: url('https://www.onlygfx.com/wp-content/uploads/2021/04/grey-triangle-pattern-seamless-background-1.jpg');
+      background-repeat: repeat;
+      background-size: contain;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #d50000;
+      margin-left: 45px;
+
+      padding: 10px 20px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+    }
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .main-title {
+      text-align: left;
+      font-size: 32px;
+      margin-left: 50px;
+
+      margin-top: 20px;
+      padding-left: 20px;
+      color: #d50000;
+    }
+    .news-container {
+      display: flex;
+      width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+      justify-content: space-between;
+    }
+    .news {
+      width: 33.33%;
+      margin-bottom: 0px;
+      border: none;
+      background-color: transparent;
+      padding: 20px;
+      transition: width 0.3s ease;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+    .news.expanded {
+      width: 66.66%;
+    }
+    .thumbnail {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    .headline {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #333;
+    }
+    .expand {
+      display: none;
+      padding-top: 0px;
+    }
+    .expanded .expand {
+      display: block;
+    }
+    .article-content {
+      color: #666;
+      line-height: 1.6;
+      display: none;
+      background-color: #fff;
+      padding: 20px;
+    }
+    .article-content.active {
+      display: block;
+    }
+    .article-bullet-points {
+      margin-top: 0px;
+      display: none;
+      column-count: 2;
+      column-gap: 18px;
+    }
+    .article-bullet-points.active {
+      display: block;
+    }
+    .selected-article-box {
+      margin-top: 0px;
+      padding: 20px;
+      width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
+    .selected-article-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 0px;
+      color: #333;
+    }
+    .selected-article-content {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .selected-article-bullet-points {
+
+            font-size: 18px;
+
+    }
+    .selected-article-bullet-column {
+      width: 100%;
+    }
+    .selected-article-bullet-points .bullet-point {
+      align-items: center;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .selected-article-bullet-points .bullet-point::before {
+      content: "\2022";
+      font-size: 18px;
+      margin-right: 5px;
+      color: #333;
+    }
+    .selected-article-bullet-points .bullet-point strong {
+      font-weight: bold;
+            font-size: 20px;
+
+    }
+    .arrows {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 100%;
+      background-color: #d50000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+    }
+    .arrow-left {
+      left: 0;
+    }
+    .arrow-right {
+      right: 0;
+    }
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var articles = document.querySelectorAll('.news');
+      var selectedArticleBox = document.getElementById('selected-article-box');
+      var selectedArticleTitle = document.getElementById('selected-article-title');
+      var selectedArticleContent = document.getElementById('selected-article-content');
+      var selectedArticleBulletPoints = document.getElementById('selected-article-bullet-points');
+      var arrowLeft = document.getElementById('arrow-left');
+      var arrowRight = document.getElementById('arrow-right');
+      var currentIndex = 0;
+      
+      function showArticle(index) {
+        var selectedArticle = articles[index];
+        var expandedArticle = document.querySelector('.news.expanded');
+        
+        if (expandedArticle) {
+          expandedArticle.classList.remove('expanded');
+        }
+        
+        selectedArticle.classList.add('expanded');
+        
+        articles.forEach(function(article) {
+          if (article !== selectedArticle) {
+            article.style.width = '16.66%';
+          }
+        });
+        
+        selectedArticle.style.width = '66.66%';
+        
+        var articleContent = selectedArticle.querySelector('.article-content');
+        var bulletPoints = selectedArticle.querySelector('.article-bullet-points');
+        
+        selectedArticleContent.innerHTML = articleContent.innerHTML;
+        selectedArticleBulletPoints.innerHTML = bulletPoints.innerHTML;
+        
+        selectedArticleBox.style.display = 'block';
+        var selectedArticleOffset = selectedArticleBox.offsetTop - window.innerHeight + 350;
+        window.scrollTo(0, selectedArticleOffset);
+      }
+      
+      arrowLeft.addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + articles.length) % articles.length;
+        showArticle(currentIndex);
+      });
+      
+      arrowRight.addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % articles.length;
+        showArticle(currentIndex);
+      });
+      
+      articles.forEach(function(article, index) {
+        article.addEventListener('click', function() {
+          currentIndex = index;
+          showArticle(currentIndex);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="header">
+    <img src="https://i.postimg.cc/tC1cY5dp/Lantern.png" alt="Global Lantern News Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+    <h1>Global Lantern News</h1>
+  </div>
+
+  <h2 class="main-title" style="padding-left: 20px; color: #d50000;">Israel-Palestine Conflict</h2>
+
+  <div class="news-container">
+    <div class="news">
+      <img class="thumbnail" src="https://i.postimg.cc/Mpypctgx/Picture-1.jpg" alt="Thumbnail 1">
+      <h2 class="headline">A. Settlement Construction</h2>
+      <div class="expand">
+        <div class="article-content">
+          In recent years, settlements have continued to expand, posing significant challenges to the Palestinian people and the prospects for peace. <br><br>
+          The expansion of Israeli settlements in the West Bank is a flagrant violation of international law and a major obstacle to achieving a just and lasting peace. These settlements not only encroach upon Palestinian land, but they also fragment the West Bank, making it increasingly difficult to establish a viable Palestinian state.
+<br><br>
+          One of the most significant consequences is the displacement and dispossession of Palestinian families. Land confiscation and demolitions have become all too common, leading to the forced eviction of Palestinians from their homes and the destruction of their livelihoods.<br><br>
+          Palestinian Farmer: ÒThese settlements have devastating effects on our daily lives. Our access to agricultural lands and water resources is severely restricted, undermining our ability to sustain our families and communities. It's a constant struggle for survival and an infringement on our basic human rights.Ó
+<br><br>
+          Settlement construction in the West Bank is widely considered a violation of international law, including the Fourth Geneva Convention. The international community has consistently condemned these actions, recognizing their illegality and calling for their cessation.
+
+        </div>
+        <div class="article-bullet-points">
+          <div class="bullet-point">Settlements are a threat to the Palestinian people and to the prospect of achieving peace.
+</div>
+          <div class="bullet-point">Settlements violate international law.</div>
+          <div class="bullet-point">Settlements involve the forceful eviction of Palestinians from their homes.
+</div>
+          <div class="bullet-point">Palestinians are also restricted from access to agricultural lands that are important for their livelihood.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="news">
+      <img class="thumbnail" src="https://i.postimg.cc/VL06wzRJ/Picture-2.jpg" alt="Thumbnail 2">
+      <h2 class="headline">B. Civilian Atrocities</h2>
+      <div class="expand">
+        <div class="article-content">
+          In recent incidents, Palestinians have experienced the devastating loss of innocent lives, incomparably. <br><br>
+          The civilian atrocities in this conflict are a painful reminder of the urgent need for a just and lasting peace. Palestinians have long suffered from the effects of occupation, including indiscriminate bombings, settler violence, and land confiscation. It is imperative to address the root causes of these atrocities to ensure a brighter future for all.
+<br><br>
+         It is crucial to understand the everyday struggles faced by Palestinians in the occupied territories. The demolitions of homes, restrictions on movement, and military raids have profound consequences on innocent civilians, including women, children, and the elderly. These atrocities cannot be ignored or minimized.
+<br><br>
+          The international community must hold Israel accountable for its actions and the civilian casualties that result from its military operations. The disproportionate use of force, targeted assassinations, and collective punishment have inflicted unimaginable suffering on Palestinian families. Justice and accountability are essential for any prospects of lasting peace.<br><br>
+It is important to highlight the Palestinian efforts to achieve a peaceful resolution to the conflict. Calls for negotiations, international diplomacy, and nonviolent resistance demonstrate the commitment of Palestinians to secure their rights and build a future free from violence and oppression.<br><br>
+Civilian atrocities in the Israeli-Palestinian conflict are a tragic reality that must be addressed. It is vital to understand the plight of Palestinians and the urgent need for a just and equitable resolution to this long-standing conflict.
+
+        </div>
+        <div class="article-bullet-points">
+          <div class="bullet-point">Palestinians face the loss of innocent civilians due to the conflict. 
+
+</div>
+          <div class="bullet-point">Palestinians have suffered from the effects of prolonged occupation.
+</div>
+<div class="bullet-point">Palestinians are asking the international community to act and provide justice for the Palestinians. 
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="news">
+      <img class="thumbnail" src="https://www.courthousenews.com/wp-content/uploads/2020/01/Palestinians.jpg" alt="Thumbnail 3">
+      <h2 class="headline">C. Unequal Political Representation</h2>
+      <div class="expand">
+        <div class="article-content">
+          Fair political representation is crucial for any legitimate peace process. Unfortunately, Palestinians face systemic challenges that limit their political agency and voice. From restrictions on movement to the denial of voting rights, Palestinians have been marginalized in their own homeland, hindering their ability to influence decisions that directly impact their lives.
+<br><br>
+          The presence of checkpoints, barriers, and the separation wall impedes Palestinians' freedom of movement and makes it difficult for them to participate fully in political processes. These physical obstacles hinder their ability to engage in civic activities, attend political gatherings, or campaign for their rights.
+<br><br>
+          The Israeli government's control over crucial aspects of Palestinian life, such as land allocation, resources, and residency rights, severely limits the ability of Palestinians to exercise their political agency. Palestinians are subject to Israeli policies and decisions that are made without their meaningful participation or consent.
+<br><br>
+         The recurring postponement of Palestinian elections has also contributed to the sense of disenfranchisement and frustration among Palestinians. The lack of a unified political leadership and a democratic electoral process further exacerbates the challenges faced by Palestinians in achieving fair political representation.
+<br><br>
+The issue of unfair political representation in the Israeli-Palestinian conflict raises important concerns about the need for inclusivity and equal participation in decision-making processes. It is crucial to address these challenges to foster a more equitable political landscape.
+
+        </div>
+        <div class="article-bullet-points">
+          <div class="bullet-point">Palestinians face barriers to political representation.
+</div>
+          <div class="bullet-point">Palestinians find their rights, including that of freedom of movement, political gathering etc. to be violated by the Israeli authorities.
+</div>
+          <div class="bullet-point">Palestinian elections are regularly postponed, limiting the potential for fair political representation.
+</div> 
+<div class="bullet-point">This in hand reduces the potential for inclusive and equal participation in political decision-making.
+
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="selected-article-box" id="selected-article-box">
+    <div class="arrows arrow-left" id="arrow-left">&lt;</div>
+    <div class="selected-article-title" id="selected-article-title"></div>
+    <div class="selected-article-content" id="selected-article-content"></div>
+    <div class="selected-article-bullet-points" id="selected-article-bullet-points"></div>
+    <div class="arrows arrow-right" id="arrow-right">&gt;</div>
+  </div>
+
+  <div class="full-width-section">
+    <div class="selected-article-title" id="selected-article-title"></div>
+    <div class="selected-article-content" id="selected-article-content"></div>
+    <div class="selected-article-bullet-points" id="selected-article-bullet-points"></div>
+  </div>
+
+</body>
+</html>
