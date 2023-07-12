@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Global Lantern News - Israel-Palestine Conflict</title>
+  <meta charset="UTF-8">
+
+
+  <title>Global Lantern News - Israelisch-Pal&auml;stinensischer Konflikt</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Georgia, serif;
+hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
       background-color: #f2f2f2;
-      background-image: url('https://www.onlygfx.com/wp-content/uploads/2021/04/grey-triangle-pattern-seamless-background-1.jpg');
-      background-repeat: repeat;
-      background-size: contain;
+      
       margin: 0;
       padding: 0;
     }
@@ -17,7 +22,7 @@
     }
     .header {
       background-color: #1976d2;
-      margin-left: 45px;
+      margin-left: 35px;
 
       padding: 10px 20px;
       color: #fff;
@@ -63,10 +68,11 @@
       border-radius: 5px;
     }
     .headline {
-      font-size: 24px;
+font-size: calc(0.8*thumbnail.width);
       font-weight: bold;
       margin-top: 10px;
       color: #333;
+
     }
     .expand {
       display: none;
@@ -75,6 +81,16 @@
     .expanded .expand {
       display: block;
     }
+    .article-bullet-points {
+      margin-top: 0px;
+      display: none;
+      column-count: 2;
+      column-gap: 18px;
+    }
+    .article-bullet-points.active {
+      display: block;
+    }
+
     .article-content {
       align-items: center;
 
@@ -86,15 +102,6 @@
     }
     .article-content.active {
 
-      display: block;
-    }
-    .article-bullet-points {
-      margin-top: 0px;
-      display: none;
-      column-count: 2;
-      column-gap: 18px;
-    }
-    .article-bullet-points.active {
       display: block;
     }
     .selected-article-box {
@@ -115,22 +122,24 @@
       font-weight: bold;
       margin-bottom: 0px;
       color: #333;
-    }
-    .selected-article-content {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .selected-article-bullet-points {
+    }    
+.selected-article-bullet-points {
             font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 25px;
+
+
 
     }
     .selected-article-bullet-column {
       width: 50%;
+
     }
     .selected-article-bullet-points .bullet-point {
       align-items: center;
       margin-bottom: 10px;
+      font-weight: bold;
+
       color: #333;
     }
     .selected-article-bullet-points .bullet-point::before {
@@ -138,11 +147,19 @@
       font-size: 18px;
       margin-right: 5px;
       color: #333;
+      font-weight: bold;
+
     }
     .selected-article-bullet-points .bullet-point strong {
       font-weight: bold;
             font-size: 20px;
 
+    }
+
+    .selected-article-content {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
     .arrows {
       position: fixed;
@@ -164,6 +181,9 @@
     .arrow-right {
       right: 0;
     }
+
+
+
   </style>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -186,19 +206,20 @@
         
         selectedArticle.classList.add('expanded');
         
-        articles.forEach(function(article) {
-          if (article !== selectedArticle) {
-            article.style.width = '16.66%';
-          }
-        });
-        
-        selectedArticle.style.width = '66.66%';
-        
+         articles.forEach(function(article) {
+      if (article !== selectedArticle) {
+        article.style.width = '16.66%';
+        article.querySelector('.headline').style.fontSize = '16px'; // Shrink headline font size
+      } else {
+        article.style.width = '66.66%';
+        article.querySelector('.headline').style.fontSize = '24px'; // Grow headline font size
+      }
+    });        
         var articleContent = selectedArticle.querySelector('.article-content');
         var bulletPoints = selectedArticle.querySelector('.article-bullet-points');
+        selectedArticleBulletPoints.innerHTML = bulletPoints.innerHTML;
         
         selectedArticleContent.innerHTML = articleContent.innerHTML;
-        selectedArticleBulletPoints.innerHTML = bulletPoints.innerHTML;
         
         selectedArticleBox.style.display = 'block';
         var selectedArticleOffset = selectedArticleBox.offsetTop - window.innerHeight + 350;
@@ -223,6 +244,7 @@
       });
     });
   </script>
+
 </head>
 <body>
   <div class="header">
@@ -230,79 +252,86 @@
     <h1>Global Lantern News</h1>
   </div>
 
-  <h2 class="main-title" style="padding-left: 20px; color: #1976d2;">Israel-Palestine Conflict</h2>
+  <h2 class="main-title" style="padding-left: 20px; color: #1976d2;"> Israelisch-Pal&auml;stinensischer Konflikt
+
+</h2>
 
   <div class="news-container">
     <div class="news">
       <img class="thumbnail" src="https://www.reuters.com/resizer/hw1Po5kbuDX2J3SBlEzZbceANqA=/800x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/VQUNJTSONFJEHBVVLC3XCXTB74.jpg" alt="Thumbnail 1">
-      <h2 class="headline">A. Settlement Construction</h2>
+      <h2 class="headline">A. Siedlungsbau</h2>
       <div class="expand">
         <div class="article-content">
-          In recent years, settlements have been expanding in the West Bank, with a focus on bolstering security and providing Jewish communities a place to call home.<br><br>
-          These settlements play a crucial role in ensuring the security and defense of Israeli citizens. They act as a buffer zone, providing early warning against potential threats and preventing infiltration of terrorists into our cities. It's a matter of safeguarding our people and preserving peace.<br><br>
-          Another aspect is the historical and religious connection that Jewish communities have with the West Bank. These lands hold deep meaning for many Israelis, with biblical references and a rich heritage dating back centuries. For them, settlements represent a natural extension of the Jewish homeland.<br><br>
-          The construction and development of settlements bring numerous economic benefits to both Israelis and Palestinians alike. They create jobs, stimulate local businesses, and contribute to the overall prosperity of the region. It's about fostering economic growth and improving the lives of all residents.<br><br>
-          It's important to note that settlements are built in accordance with Israeli law. The Israeli government carefully approves the construction and expansion of settlements, taking into account security considerations, historical ties, and economic opportunities. The process involves thorough assessments and adheres to legal frameworks.
+         <p>In den letzten Jahren wurde der Siedlungsbau im Westjordanland ausgeweitet, um die Sicherheit zu erh&ouml;hen und j&uuml;dischen Gemeinden ein Zuhause zu bieten.</p>
+<p>Diese Siedlungen spielen eine entscheidende Rolle bei der Gew&auml;hrleistung der Sicherheit und Verteidigung der israelischen B&uuml;rger. Sie fungieren als Pufferzone, die fr&uuml;hzeitig vor potenziellen Bedrohungen warnt und das Eindringen von Terroristen in unsere St&auml;dte verhindert. Es geht darum, unser Volk zu sch&uuml;tzen und den Frieden zu bewahren.</p>
+<p>Ein weiterer Aspekt ist die historische und religi&ouml;se Verbindung, die die j&uuml;dischen Gemeinden mit dem Westjordanland haben. Diese Gebiete haben f&uuml;r viele Israelis eine tiefe Bedeutung, mit biblischen Bez&uuml;gen und einem reichen Erbe, das Jahrhunderte zur&uuml;ckreicht. F&uuml;r sie stellen die Siedlungen eine nat&uuml;rliche Erweiterung des j&uuml;dischen Heimatlandes dar.</p>
+<p>Der Bau und die Entwicklung von Siedlungen bringen sowohl f&uuml;r Israelis als auch f&uuml;r Pal&auml;stinenser zahlreiche wirtschaftliche Vorteile mit sich. Sie schaffen Arbeitspl&auml;tze, beleben die lokale Wirtschaft und tragen zum allgemeinen Wohlstand der Region bei. Es geht darum, das Wirtschaftswachstum zu f&ouml;rdern und das Leben aller Bewohner zu verbessern.</p>
         </div>
         <div class="article-bullet-points">
-          <div class="bullet-point">Israel is expanding its settlements in the West Bank to bolster its security while also providing housing for Jewish communities.</div>
-          <div class="bullet-point">The West Bank holds historical and religious significance to the Jewish communities.</div>
-          <div class="bullet-point">Both Israelis and Palestinians economically benefit from settlement constructions.</div>
-          <div class="bullet-point">Settlement constructions are in accordance with Israeli laws.</div>
+          <div class="bullet-point">Israel baut seine Siedlungen im Westjordanland aus, um seine Sicherheit zu erh&ouml;hen und gleichzeitig Wohnraum f&uuml;r j&uuml;dische Gemeinden zu schaffen.</div>
+          <div class="bullet-point">Das Westjordanland hat eine historische und religi&ouml;se Bedeutung f&uuml;r die j&uuml;dischen Gemeinden.</div>
+          <div class="bullet-point">Sowohl Israelis als auch Pal&auml;stinenser profitieren wirtschaftlich vom Siedlungsbau.</div>
+          <div class="bullet-point">Der Bau von Siedlungen steht im Einklang mit den israelischen Gesetzen.
+
+</div>
         </div>
       </div>
     </div>
 
     <div class="news">
       <img class="thumbnail" src="https://icg-prod.s3.amazonaws.com/IsrPalReport-3Aug2021-1.jpg" alt="Thumbnail 2">
-      <h2 class="headline">B. Civilian Atrocities</h2>
+      <h2 class="headline">B. Gr&auml;ueltaten an Zivilisten</h2>
       <div class="expand">
         <div class="article-content">
-          The Israeli-Palestinian conflict has sadly witnessed civilian casualties on both sides.<br><br>
-          It is deeply saddening to witness civilian casualties in this conflict. Israel takes great care to avoid harm to non-combatants, implementing strict protocols and conducting thorough investigations into any incidents involving civilian casualties. IsraelÕs goal is always to minimize harm while defending citizens.<br><br>
-          It is crucial to understand the threats faced by Israel, such as rocket attacks, suicide bombings, and other forms of terrorism. These threats necessitate measures to protect Israeli civilians and maintain the safety and security of the nation.<br><br>
-          It is important to note the efforts made by Israel to protect civilians, including the implementation of advanced defense systems, early warning sirens, and bomb shelters to mitigate the impact of attacks. These measures aim to safeguard the lives of both Israelis and Palestinians.<br><br>
-          Civilian atrocities in the Israeli-Palestinian conflict are a heartbreaking reality. It is crucial to understand the complexities of the situation and the efforts made by various stakeholders to minimize harm and protect innocent lives.
+          <p>Der israelisch-pal&auml;stinensische Konflikt hat auf beiden Seiten traurige Opfer unter der Zivilbev&ouml;lkerung gefordert.</p>
+<p>Es ist sehr traurig, in diesem Konflikt zivile Opfer zu beklagen. Israel achtet sehr darauf, dass keine Nichtkombattanten zu Schaden kommen, f&uuml;hrt strenge Protokolle ein und untersucht alle Vorf&auml;lle, bei denen Zivilisten zu Schaden kommen, gr&uuml;ndlich. Israels Ziel ist es immer, den Schaden zu minimieren und gleichzeitig die B&uuml;rger zu verteidigen.</p>
+<p>Es ist wichtig, die Bedrohungen zu verstehen, denen Israel ausgesetzt ist, wie Raketenangriffe, Selbstmordattentate und andere Formen des Terrorismus. Diese Bedrohungen machen Ma&szlig;nahmen zum Schutz der israelischen Zivilbev&ouml;lkerung und zur Aufrechterhaltung der Sicherheit des Landes erforderlich.</p>
+<p>Es ist wichtig, die Bem&uuml;hungen Israels zum Schutz der Zivilbev&ouml;lkerung zu beachten, einschlie&szlig;lich der Einf&uuml;hrung fortschrittlicher Verteidigungssysteme, Fr&uuml;hwarnsirenen und Luftschutzbunker, um die Auswirkungen von Angriffen zu mildern. Diese Ma&szlig;nahmen zielen darauf ab, das Leben sowohl von Israelis als auch von Pal&auml;stinensern zu sch&uuml;tzen.</p>
+<p>Die Gr&auml;ueltaten an der Zivilbev&ouml;lkerung im israelisch-pal&auml;stinensischen Konflikt sind eine herzzerrei&szlig;ende Realit&auml;t. Es ist von entscheidender Bedeutung, die Komplexit&auml;t der Situation und die Bem&uuml;hungen der verschiedenen Beteiligten zu verstehen, um Schaden zu minimieren und unschuldiges Leben zu sch&uuml;tzen.</p>
         </div>
         <div class="article-bullet-points">
-          <div class="bullet-point">Israel takes great care not to harm civilian casualties, implementing strict protocols and conducting thorough investigations.</div>
-          <div class="bullet-point">Israel is faced with different forms of security threats which make security a priority for the nation.</div>
+          <div class="bullet-point">Israel achtet sehr darauf, dass keine zivilen Opfer zu Schaden kommen, f&uuml;hrt strenge Protokolle und gr&uuml;ndliche Untersuchungen durch.</div>
+          <div class="bullet-point">Israel ist mit verschiedenen Formen von Sicherheitsbedrohungen konfrontiert, die die Sicherheit zu einer Priorit&auml;t f&uuml;r die Nation machen. </div>
         </div>
       </div>
     </div>
 
     <div class="news">
       <img class="thumbnail" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:eco,dpr_2.0/rockcms/2022-06/220630-israel-parliament-mb-0934-fb8c3a.jpg" alt="Thumbnail 3">
-      <h2 class="headline">C. Unequal Political Representation</h2>
+      <h2 class="headline">C. Ungleiche politische Repr&auml;sentation</h2>
       <div class="expand">
+<div class="article-bullet-points">
+          <div class="bullet-point">Israel ist ein demokratisches Land. </div>
+          <div class="bullet-point">Alle Israelis haben das Recht zu w&auml;hlen und sich politisch zu beteiligen, auch Israelis, die ethnischen Minderheiten angeh&ouml;ren. </div>
+          <div class="bullet-point">Arabische politische Parteien im israelischen Parlament bieten eine politische Vertretung f&uuml;r arabisch-israelische B&uuml;rger. </div>
+          <div class="bullet-point">Die israelische Regierung arbeitet aktiv an der L&ouml;sung von Problemen, mit denen Minderheitengemeinschaften, einschließlich der Araber, konfrontiert sind. </div>
+        </div>
+
         <div class="article-content">
-          Israel is a democratic nation that upholds the principles of equality and representation for all its citizens. Arab citizens of Israel have the right to vote, participate in political parties, and even hold seats in the Israeli Knesset. This demonstrates our commitment to inclusivity and fair representation within the political system.<br><br>
-          It is important to acknowledge the presence of Arab political parties in the Israeli Knesset. These parties represent the interests of Arab citizens and contribute to the democratic process by voicing their concerns and advocating for their communities' rights. Their participation demonstrates the inclusive nature of Israeli democracy.<br><br>
-          While there are ongoing challenges in achieving perfect political representation, Israel has made significant progress in recent years. Initiatives are being implemented to bridge gaps and address concerns raised by minority communities. This includes allocating resources for social and economic development in Arab-majority towns and promoting dialogue between different communities.<br><br>
-          It is worth noting that despite the ongoing conflict, there have been instances of cooperation and engagement between Israeli and Palestinian officials. These interactions aim to build trust, foster dialogue, and explore possibilities for a peaceful resolution. Such efforts contribute to the broader goal of fair political representation for all parties involved.
+         <p>Israel ist ein demokratischer Staat, der die Grunds&auml;tze der Gleichheit und der Vertretung aller seiner B&uuml;rger hochh&auml;lt. Die arabischen B&uuml;rger Israels haben das Recht zu w&auml;hlen, in politischen Parteien mitzuwirken und sogar Sitze in der israelischen Knesset zu besetzen. Dies ist ein Beweis f&uuml;r unser Engagement f&uuml;r Inklusion und eine gerechte Vertretung im politischen System.</p>
+<p>Es ist wichtig, die Pr&auml;senz arabischer politischer Parteien in der israelischen Knesset anzuerkennen. Diese Parteien vertreten die Interessen der arabischen B&uuml;rger und tragen zum demokratischen Prozess bei, indem sie ihre Anliegen zum Ausdruck bringen und sich f&uuml;r die Rechte ihrer Gemeinschaften einsetzen. Ihre Beteiligung ist ein Beweis f&uuml;r den integrativen Charakter der israelischen Demokratie.</p>
+<p>Auch wenn es nach wie vor schwierig ist, eine perfekte politische Vertretung zu erreichen, hat Israel in den letzten Jahren erhebliche Fortschritte gemacht. Es werden Initiativen ergriffen, um L&uuml;cken zu schlie&szlig;en und auf die Anliegen von Minderheiten einzugehen. Dazu geh&ouml;ren die Bereitstellung von Mitteln f&uuml;r die soziale und wirtschaftliche Entwicklung in St&auml;dten mit arabischer Mehrheit und die F&ouml;rderung des Dialogs zwischen den verschiedenen Gemeinschaften.</p>
+<p>Es ist erw&auml;hnenswert, dass es trotz des anhaltenden Konflikts F&auml;lle von Zusammenarbeit und Engagement zwischen israelischen und pal&auml;stinensischen Beamten gegeben hat. Diese Interaktionen zielen darauf ab, Vertrauen aufzubauen, den Dialog zu f&ouml;rdern und M&ouml;glichkeiten f&uuml;r eine friedliche L&ouml;sung auszuloten. Solche Bem&uuml;hungen tragen zu dem &uuml;bergeordneten Ziel einer fairen politischen Vertretung f&uuml;r alle beteiligten Parteien bei.</p>
         </div>
-        <div class="article-bullet-points">
-          <div class="bullet-point">Israel is a democratic nation. .</div>
-          <div class="bullet-point">All Israelis have the right to vote and political participation, including Israelis who are ethnic minorities.</div>
-          <div class="bullet-point">Arab political parties in the Israeli parliament provide political representation for Arab-Israeli citizens.</div>
-          <div class="bullet-point">The Israeli government is actively working on addressing difficulties faced by minority communities, including Arabs.</div>
-        </div>
+        
       </div>
     </div>
   </div>
   
   <div class="selected-article-box" id="selected-article-box">
     <div class="arrows arrow-left" id="arrow-left">&lt;</div>
-    <div class="selected-article-title" id="selected-article-title"></div>
+    <div class="selected-article-title" id="selected-article-title"></div>   
+ <div class="selected-article-bullet-points" id="selected-article-bullet-points"></div>
+
     <div class="selected-article-content" id="selected-article-content"></div>
-    <div class="selected-article-bullet-points" id="selected-article-bullet-points"></div>
     <div class="arrows arrow-right" id="arrow-right">&gt;</div>
   </div>
 
   <div class="full-width-section">
     <div class="selected-article-title" id="selected-article-title"></div>
-    <div class="selected-article-content" id="selected-article-content"></div>
     <div class="selected-article-bullet-points" id="selected-article-bullet-points"></div>
+
+    <div class="selected-article-content" id="selected-article-content"></div>
   </div>
 
 </body>
