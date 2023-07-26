@@ -1,173 +1,10 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>Global Lantern News - Israelisch-Pal&auml;stinensischer Konflikt</title>
+  <title>Global Lantern News - Israel-Palestine Conflict</title>
   <style>
     body {
-      font-family: Montserrat,sans-serif;
-hyphens: manual;
-
-overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
-    }
-    .header {
-      background-color: #d50000;
-      margin-left: 35px;
-
-      padding: 10px 20px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-    }
-    .header h1 {
-      font-size: 24px;
-      margin: 0;
-    }
-    .main-title {
-      text-align: left;
-      font-size: 32px;
-      margin-left: 50px;
-
-      margin-top: 20px;
-      padding-left: 20px;
-      color: #d50000;
-    }
-    .news-container {
-      display: flex;
-      width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-
-      justify-content: space-between;
-    }
-    .news {
-      width: 33.33%;
-      margin-bottom: 0px;
-      border: none;
-      background-color: transparent;
-      padding: 20px;
-      transition: width 0.3s ease;
-      cursor: pointer;
-      box-sizing: border-box;
-    }
-    .news.expanded {
-      width: 66.66%;
-    }
-    .thumbnail {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 5px;
-    }
-    .headline {
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 10px;
-      color: #333;
-    }
-    .expand {
-      display: none;
-      padding-top: 0px;
-    }
-    .expanded .expand {
-      display: block;
-    }
-    .article-content {
-      color: #666;
-      line-height: 1.6;
-      display: none;
-      background-color: #fff;
-      padding: 20px;
-    }
-    .article-content.active {
-      display: block;
-    }
-    .article-bullet-points {
-      margin-top: 0px;
-      display: none;
-      column-count: 2;
-      column-gap: 18px;
-    }
-    .article-bullet-points.active {
-      display: block;
-    }
-    .selected-article-box {
-      margin-top: 0px;
-      padding: 20px;
-      width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-
-
-      background-color: #fff;
-      border: 1px solid #ddd;
-    }
-    .selected-article-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 0px;
-      color: #333;
-    }
-    .selected-article-content {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .selected-article-bullet-points {
-      margin-bottom: 25px;
-      font-weight: bold;
-
-            font-size: 18px;
-
-    }
-    .selected-article-bullet-column {
-      width: 100%;
-    }
-    .selected-article-bullet-points .bullet-point {
-      align-items: center;
-      margin-bottom: 10px;
-      color: #333;
-    }
-    .selected-article-bullet-points .bullet-point::before {
-      content: "\2022";
-      font-size: 18px;
-      margin-right: 5px;
-      color: #333;
-    }
-    .selected-article-bullet-points .bullet-point strong {
-      font-weight: bold;
-            font-size: 20px;
-
-    }
-    .arrows {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 50px;
-      height: 100%;
-      background-color: #d50000;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 999;
-    }
-    .arrow-left {
-      left: 0;
-    }
-    .arrow-right {
-      right: 0;
-    }
-        body {
-      font-family: Montserrat,sans-serif;
-      hyphens: manual;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
+      font-family: Arial, sans-serif;
       background-color: #f2f2f2;
       margin: 0;
       padding: 0;
@@ -178,7 +15,6 @@ overflow-wrap: break-word;
       color: #fff;
       display: flex;
       align-items: center;
-      justify-content: center;
     }
     .header h1 {
       font-size: 24px;
@@ -188,26 +24,32 @@ overflow-wrap: break-word;
       text-align: center;
       font-size: 32px;
       margin-top: 20px;
-      color: #d50000;
     }
     .news-container {
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
-      justify-content: center;
     }
     .news {
-      width: 100%;
+      width: calc(33.33% - 20px);
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      background-color: #fff;
       padding: 20px;
-      box-sizing: border-box;
+      cursor: pointer;
+      transition: width 0.3s ease;
     }
     .news.expanded {
       width: 100%;
+      flex-basis: 100%;
     }
     .thumbnail {
       width: 100%;
       max-width: 100%;
       border-radius: 5px;
+      transition: opacity 0.3s ease;
+    }
+    .news.expanded .thumbnail {
+      opacity: 0.3;
     }
     .headline {
       font-size: 24px;
@@ -215,102 +57,64 @@ overflow-wrap: break-word;
       margin-top: 10px;
       color: #333;
     }
+    .expand {
+      display: none;
+      padding-top: 20px;
+    }
+    .expanded .expand {
+      display: block;
+    }
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
     .article-content {
       color: #666;
       line-height: 1.6;
-      background-color: #fff;
-      padding: 20px;
     }
-    .selected-article-box {
+    .article-text {
+      display: none;
       margin-top: 20px;
-      padding: 20px;
-      width: 95%;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: #fff;
-      border: 1px solid #ddd;
     }
-    .selected-article-title {
-      font-size: 24px;
+    .article-text.expanded {
+      display: block;
+      column-count: 2;
+    }
+    .bulletpoints {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .bulletpoints li {
+      padding: 5px;
+      background-color: #f2f2f2;
       font-weight: bold;
-      margin-bottom: 20px;
-      color: #333;
     }
-    .selected-article-content {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 20px;
+    .bulletpoints li::before {
+      content: '\2022';
+      margin-right: 5px;
+      color: #d50000;
     }
-    @media (min-width: 768px) {
-      .header {
-        padding: 10px 20px;
-      }
-      .news {
-        width: 33.33%;
-      }
-      .news-container {
-        padding: 0 20px;
+    @media only screen and (max-width: 768px) {
+      .article-text.expanded {
+        column-count: 1;
       }
     }
   </style>
   <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var articles = document.querySelectorAll('.news');
-      var selectedArticleBox = document.getElementById('selected-article-box');
-      var selectedArticleTitle = document.getElementById('selected-article-title');
-      var selectedArticleContent = document.getElementById('selected-article-content');
-      var selectedArticleBulletPoints = document.getElementById('selected-article-bullet-points');
-      var arrowLeft = document.getElementById('arrow-left');
-      var arrowRight = document.getElementById('arrow-right');
-      var currentIndex = 0;
-      
-      function showArticle(index) {
-        var selectedArticle = articles[index];
-        var expandedArticle = document.querySelector('.news.expanded');
-        
-        if (expandedArticle) {
-          expandedArticle.classList.remove('expanded');
+    function expandArticle(articleId) {
+      var articles = document.getElementsByClassName("news");
+      for (var i = 0; i < articles.length; i++) {
+        var article = articles[i];
+        if (article.id === articleId) {
+          article.classList.add("expanded");
+        } else {
+          article.classList.remove("expanded");
         }
-        
-        selectedArticle.classList.add('expanded');
-        
-         articles.forEach(function(article) {
-      if (article !== selectedArticle) {
-        article.style.width = '16.66%';
-        article.querySelector('.headline').style.fontSize = '16px'; // Shrink headline font size
-      } else {
-        article.style.width = '66.66%';
-        article.querySelector('.headline').style.fontSize = '24px'; // Grow headline font size
       }
-    });        
-        var articleContent = selectedArticle.querySelector('.article-content');
-        var bulletPoints = selectedArticle.querySelector('.article-bullet-points');
-        selectedArticleBulletPoints.innerHTML = bulletPoints.innerHTML;
-        
-        selectedArticleContent.innerHTML = articleContent.innerHTML;
-        
-        selectedArticleBox.style.display = 'block';
-        var selectedArticleOffset = selectedArticleBox.offsetTop - window.innerHeight + 350;
-        window.scrollTo(0, selectedArticleOffset);
-      }
-      
-      arrowLeft.addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + articles.length) % articles.length;
-        showArticle(currentIndex);
-      });
-      
-      arrowRight.addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % articles.length;
-        showArticle(currentIndex);
-      });
-      
-      articles.forEach(function(article, index) {
-        article.addEventListener('click', function() {
-          currentIndex = index;
-          showArticle(currentIndex);
-        });
-      });
-    });
+    }
   </script>
 </head>
 <body>
@@ -319,89 +123,74 @@ overflow-wrap: break-word;
     <h1>Global Lantern News</h1>
   </div>
 
-  <h2 class="main-title" style="padding-left: 20px; color: #d50000;">Israelisch-Pal&auml;stinensischer Konflikt</h2>
+  <h2 class="main-title">Israel-Palestine Conflict</h2>
 
   <div class="news-container">
-    <div class="news">
-      <img class="thumbnail" src="https://i.postimg.cc/Mpypctgx/Picture-1.jpg" alt="Thumbnail 1">
-      <h2 class="headline">A. Siedlungsbau</h2>
+    <div class="news" id="article1" onclick="expandArticle('article1')">
+      <img class="thumbnail" src="https://www.reuters.com/resizer/hw1Po5kbuDX2J3SBlEzZbceANqA=/800x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/VQUNJTSONFJEHBVVLC3XCXTB74.jpg" alt="Thumbnail 1">
+      <h2 class="headline">A. Settlement Construction</h2>
       <div class="expand">
-        <div class="article-content">
-          <p>In den letzten Jahren wurden die Siedlungen immer weiter ausgebaut, was eine gro&szlig;e Herausforderung f&uuml;r die pal&auml;stinensische Bev&ouml;lkerung und die Aussichten auf Frieden darstellt.</p>
-<p>Die Ausweitung der israelischen Siedlungen im Westjordanland ist ein eklatanter Versto&szlig; gegen das V&ouml;lkerrecht und ein gro&szlig;es Hindernis f&uuml;r die Verwirklichung eines gerechten und dauerhaften Friedens.Diese Siedlungen dringen nicht nur in pal&auml;stinensisches Land ein, sondern zersplittern das Westjordanland und erschweren zunehmend die Gr&uuml;ndung eines lebensf&auml;higen pal&auml;stinensischen Staates.</p>
-<p>Eine der wichtigsten Folgen ist die Vertreibung und Enteignung pal&auml;stinensischer Familien. Landkonfiszierungen und Zerst&ouml;rungen sind inzwischen an der Tagesordnung, was zur Zwangsvertreibung von Pal&auml;stinensern aus ihren H&auml;usern und zur Zerst&ouml;rung ihrer Lebensgrundlage f&uuml;hrt.</p>
-<p>Pal&auml;stinensischer Landwirt: &quot;Diese Siedlungen haben verheerende Auswirkungen auf unser t&auml;gliches Leben. Unser Zugang zu landwirtschaftlichen Fl&auml;chen und Wasserressourcen ist stark eingeschr&auml;nkt, was unsere F&auml;higkeit, unsere Familien und Gemeinschaften zu ern&auml;hren, untergr&auml;bt. Es ist ein st&auml;ndiger Kampf ums &uuml;berleben und ein Versto&szlig; gegen unsere grundlegenden Menschenrechte&quot;.</p>
-        </div>
-        <div class="article-bullet-points">
-          <div class="bullet-point"> Israelischer Siedlungen sind eine Bedrohung f&uuml;r das pal&auml;stinensische Volk und f&uuml;r die Aussicht auf Frieden. 
-</div>
-          <div class="bullet-point"> Siedlungen versto&szlig;en gegen das V&ouml;lkerrecht und beinhalten die gewaltsame Vertreibung von Pal&auml;stinensern aus ihren H&auml;usern.</div>
-          <div class="bullet-point"> Au&szlig;erdem wird den Pal&auml;stinensern der Zugang zu landwirtschaftlichen Fl&auml;chen verwehrt, die f&uuml;r ihren Lebensunterhalt wichtig sind.</div>
-                  </div>
-      </div>
-    </div>
-
-    <div class="news">
-      <img class="thumbnail" src="https://i.postimg.cc/VL06wzRJ/Picture-2.jpg" alt="Thumbnail 2">
-      <h2 class="headline">B. Gr&auml;ueltaten an Zivilisten</h2>
-      <div class="expand">
-        <div class="article-content">
-          
-<p>In j&uuml;ngster Zeit haben die Pal&auml;stinenser den verheerenden Verlust unschuldiger Menschenleben erlebt, der unvergleichlich ist.</p>
-<p>Die Gr&auml;ueltaten an der Zivilbev&ouml;lkerung in diesem Konflikt sind eine schmerzliche Erinnerung an die dringende Notwendigkeit eines gerechten und dauerhaften Friedens. Die Pal&auml;stinenser leiden seit langem unter den Auswirkungen der Besatzung, einschlie&szlig;lich wahlloser Bombenangriffe, Gewalt durch Siedler und Landbeschlagnahmung. Die Ursachen dieser Gr&auml;ueltaten m&uuml;ssen unbedingt angegangen werden, um eine bessere Zukunft f&uuml;r alle zu gew&auml;hrleisten.</p>
-<p>Es ist von entscheidender Bedeutung, die t&auml;glichen K&auml;mpfe der Pal&auml;stinenser in den besetzten Gebieten zu verstehen. Die Zerst&ouml;rung von H&auml;usern, die Einschr&auml;nkung der Bewegungsfreiheit und die milit&auml;rischen Razzien haben schwerwiegende Folgen f&uuml;r unschuldige Zivilisten, darunter Frauen, Kinder und &auml;ltere Menschen. Diese Gr&auml;ueltaten d&uuml;rfen nicht ignoriert oder heruntergespielt werden.</p>
-<p>Die internationale Gemeinschaft muss Israel f&uuml;r seine Handlungen und die zivilen Opfer seiner Milit&auml;roperationen zur Rechenschaft ziehen. Der unverh&auml;ltnism&auml;&szlig;ige Einsatz von Gewalt, gezielte T&ouml;tungen und kollektive Bestrafungen haben unvorstellbares Leid &uuml;ber pal&auml;stinensische Familien gebracht. Gerechtigkeit und Rechenschaftspflicht sind f&uuml;r die Aussicht auf einen dauerhaften Frieden unerl&auml;sslich.</p>
-<p>Es ist wichtig, die pal&auml;stinensischen Bem&uuml;hungen um eine friedliche L&ouml;sung des Konflikts hervorzuheben. Die Aufrufe zu Verhandlungen, internationaler Diplomatie und gewaltfreiem Widerstand zeigen das Engagement der Pal&auml;stinenser, ihre Rechte zu sichern und eine Zukunft ohne Gewalt und Unterdr&uuml;ckung aufzubauen.</p>
-<p>Die Gr&auml;ueltaten an der Zivilbev&ouml;lkerung im israelisch-pal&auml;stinensischen Konflikt sind eine tragische Realit&auml;t, die angegangen werden muss. Es ist von entscheidender Bedeutung, die Notlage der Pal&auml;stinenser und die dringende Notwendigkeit einer gerechten und ausgewogenen L&ouml;sung f&uuml;r diesen langj&auml;hrigen Konflikt zu verstehen.</p>
-        </div>
-        <div class="article-bullet-points">
-          <div class="bullet-point"> Die Pal&auml;stinenser haben aufgrund des Konflikts den Verlust unschuldiger Zivilisten zu beklagen.</div>
-          <div class="bullet-point"> Die Pal&auml;stinenser haben unter den Auswirkungen der anhaltenden Besatzung gelitten.</div>
-<div class="bullet-point"> Die Pal&auml;stinenser fordern die internationale Gemeinschaft auf, zu handeln und den Pal&auml;stinensern Gerechtigkeit widerfahren zu lassen.
-</div>
-
+        <img class="article-image" src="https://www.reuters.com/resizer/hw1Po5kbuDX2J3SBlEzZbceANqA=/800x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/VQUNJTSONFJEHBVVLC3XCXTB74.jpg" alt="Bigger Picture 1">
+        <p class="article-content">
+          In recent years, settlements have been expanding in the West Bank, with a focus on bolstering security and providing Jewish communities a place to call home.
+          These settlements play a crucial role in ensuring the security and defense of Israeli citizens. They act as a buffer zone, providing early warning against potential threats and preventing infiltration of terrorists into our cities. It's a matter of safeguarding our people and preserving peace.
+          Another aspect is the historical and religious connection that Jewish communities have with the West Bank. These lands hold deep meaning for many Israelis, with biblical references and a rich heritage dating back centuries. For them, settlements represent a natural extension of the Jewish homeland.
+          The construction and development of settlements bring numerous economic benefits to both Israelis and Palestinians alike. They create jobs, stimulate local businesses, and contribute to the overall prosperity of the region. It's about fostering economic growth and improving the lives of all residents.
+          It's important to note that settlements are built in accordance with Israeli law. The Israeli government carefully approves the construction and expansion of settlements, taking into account security considerations, historical ties, and economic opportunities. The process involves thorough assessments and adheres to legal frameworks.
+        </p>
+        <div class="article-text">
+          <ul class="bulletpoints">
+            <li>Israel is expanding its settlements in the West Bank to bolster its security while also providing housing for Jewish communities.</li>
+            <li>The West Bank holds historical and religious significance to the Jewish communities.</li>
+            <li>Both Israelis and Palestinians economically benefit from settlement constructions.</li>
+            <li>Settlement constructions are in accordance with Israeli laws.</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="news">
-      <img class="thumbnail" src="https://www.courthousenews.com/wp-content/uploads/2020/01/Palestinians.jpg" alt="Thumbnail 3">
-      <h2 class="headline">C. Ungleiche politische Repr&auml;sentation</h2>
+    <div class="news" id="article2" onclick="expandArticle('article2')">
+      <img class="thumbnail" src="https://icg-prod.s3.amazonaws.com/IsrPalReport-3Aug2021-1.jpg" alt="Thumbnail 2">
+      <h2 class="headline">B. Civilian Atrocities</h2>
       <div class="expand">
-        <div class="article-content">
-          Leider sind die Pal&auml;stinenser mit systemischen Herausforderungen konfrontiert, die ihre politische Handlungsf&auml;higkeit und Stimme einschr&auml;nken. Von Bewegungseinschr&auml;nkungen bis hin zur Verweigerung des Wahlrechts werden Pal&auml;stinenser in ihrer eigenen Heimat an den Rand gedr&auml;ngt, was sie daran hindert, Entscheidungen zu beeinflussen, die sich direkt auf ihr Leben auswirken.</p>
-<p>Kontrollpunkte, Sperren und die Trennungsmauer behindern die Bewegungsfreiheit der Pal&auml;stinenser und erschweren ihnen die uneingeschr&auml;nkte Teilnahme an politischen Prozessen. Diese physischen Hindernisse erschweren es ihnen, sich an zivilgesellschaftlichen Aktivit&auml;ten zu beteiligen, an politischen Versammlungen teilzunehmen oder f&uuml;r ihre Rechte zu k&auml;mpfen.</p>
-<p>Die Kontrolle der israelischen Regierung &uuml;ber wichtige Aspekte des pal&auml;stinensischen Lebens, wie Landzuteilung, Ressourcen und Aufenthaltsrechte, schr&auml;nkt die M&ouml;glichkeiten der Pal&auml;stinenser zur Aus&uuml;bung ihrer politischen Handlungsf&auml;higkeit stark ein. Die Pal&auml;stinenser sind der israelischen Politik und den Entscheidungen unterworfen, die ohne ihre sinnvolle Beteiligung oder Zustimmung getroffen werden.</p>
-<p>Die wiederholte Verschiebung der pal&auml;stinensischen Wahlen hat ebenfalls zu dem Gef&uuml;hl der Entm&uuml;ndigung und Frustration unter den Pal&auml;stinensern beigetragen. Das Fehlen einer einheitlichen politischen F&uuml;hrung und eines demokratischen Wahlverfahrens versch&auml;rft die Probleme der Pal&auml;stinenser bei der Erreichung einer gerechten politischen Vertretung noch weiter.</p>
-<p>Die Frage der ungerechten politischen Vertretung im israelisch-pal&auml;stinensischen Konflikt wirft wichtige Fragen hinsichtlich der Notwendigkeit von Inklusivit&auml;t und gleichberechtigter Beteiligung an Entscheidungsprozessen auf. Es ist von entscheidender Bedeutung, diese Herausforderungen anzugehen, um eine gerechtere politische Landschaft zu f&ouml;rdern.</p>
+        <img class="article-image" src="https://icg-prod.s3.amazonaws.com/IsrPalReport-3Aug2021-1.jpg" alt="Bigger Picture 2">
+        <p class="article-content">
+          The Israeli-Palestinian conflict has sadly witnessed civilian casualties on both sides.
+          It is deeply saddening to witness civilian casualties in this conflict. Israel takes great care to avoid harm to non-combatants, implementing strict protocols and conducting thorough investigations into any incidents involving civilian casualties. Israel’s goal is always to minimize harm while defending citizens.
+          It is crucial to understand the threats faced by Israel, such as rocket attacks, suicide bombings, and other forms of terrorism. These threats necessitate measures to protect Israeli civilians and maintain the safety and security of the nation.
+          It is important to note the efforts made by Israel to protect civilians, including the implementation of advanced defense systems, early warning sirens, and bomb shelters to mitigate the impact of attacks. These measures aim to safeguard the lives of both Israelis and Palestinians.
+          Civilian atrocities in the Israeli-Palestinian conflict are a heartbreaking reality. It is crucial to understand the complexities of the situation and the efforts made by various stakeholders to minimize harm and protect innocent lives.
+        </p>
+        <div class="article-text">
+          <ul class="bulletpoints">
+            <li>Israel takes great care not to harm civilian casualties, implementing strict protocols and conducting thorough investigations.</li>
+            <li>Israel is faced with different forms of security threats which make security a priority for the nation.</li>
+          </ul>
         </div>
-        <div class="article-bullet-points">
-          <div class="bullet-point"> Pal&auml;stinenser sehen sich Hindernissen bei der politischen Repr&auml;sentation gegen&uuml;ber.</div>
-          <div class="bullet-point"> Die israelischen Beh&ouml;rden verletzen die Rechte der Pal&auml;stinenser, darunter das Recht auf Freiz&uuml;gigkeit, politische Versammlungen usw.</div>
-          <div class="bullet-point">Die pal&auml;stinensischen Wahlen werden regelm&auml;&szlig;ig verschoben, was die M&ouml;glichkeiten einer fairen politischen Vertretung einschr&auml;nkt.
-</div> 
-<div class="bullet-point">Dies wiederum verringert die M&ouml;glichkeiten f&uuml;r eine umfassende und gleichberechtigte Beteiligung an der politischen Entscheidungsfindung.
+      </div>
+    </div>
 
-</div>
+    <div class="news" id="article3" onclick="expandArticle('article3')">
+      <img class="thumbnail" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:eco,dpr_2.0/rockcms/2022-06/220630-israel-parliament-mb-0934-fb8c3a.jpg" alt="Thumbnail 3">
+      <h2 class="headline">C. Unequal Political Representation</h2>
+      <div class="expand">
+        <img class="article-image" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:eco,dpr_2.0/rockcms/2022-06/220630-israel-parliament-mb-0934-fb8c3a.jpg" alt="Bigger Picture 3">
+        <p class="article-content">
+          Israel is a democratic nation that upholds the principles of equality and representation for all its citizens. Arab citizens of Israel have the right to vote, participate in political parties, and even hold seats in the Israeli Knesset. This demonstrates our commitment to inclusivity and fair representation within the political system.
+          It is important to acknowledge the presence of Arab political parties in the Israeli Knesset. These parties represent the interests of Arab citizens and contribute to the democratic process by voicing their concerns and advocating for their communities' rights. Their participation demonstrates the inclusive nature of Israeli democracy.
+          While there are ongoing challenges in achieving perfect political representation, Israel has made significant progress in recent years. Initiatives are being implemented to bridge gaps and address concerns raised by minority communities. This includes allocating resources for social and economic development in Arab-majority towns and promoting dialogue between different communities.
+          It is worth noting that despite the ongoing conflict, there have been instances of cooperation and engagement between Israeli and Palestinian officials. These interactions aim to build trust, foster dialogue, and explore possibilities for a peaceful resolution. Such efforts contribute to the broader goal of fair political representation for all parties involved.
+        </p>
+        <div class="article-text">
+          <ul class="bulletpoints">
+            <li>Israel is a democratic nation.</li>
+            <li>All Israelis have the right to vote and political participation, including Israelis who are ethnic minorities.</li>
+            <li>Arab political parties in the Israeli parliament provide political representation for Arab-Israeli citizens.</li>
+            <li>The Israeli government is actively working on addressing difficulties faced by minority communities, including Arabs.</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="selected-article-box" id="selected-article-box">
-    <div class="arrows arrow-left" id="arrow-left">&lt;</div>
-    <div class="selected-article-title" id="selected-article-title"></div>
-    <div class="selected-article-bullet-points" id="selected-article-bullet-points"></div>
-
-<div class="selected-article-content" id="selected-article-content"></div>
-        <div class="arrows arrow-right" id="arrow-right">&gt;</div>
-  </div>
-
-  <div class="full-width-section">
-    <div class="selected-article-title" id="selected-article-title"></div>
-    <div class="selected-article-content" id="selected-article-content"></div>
-    <div class="selected-article-bullet-points" id="selected-article-bullet-points"></div>
-  </div>
-
 </body>
 </html>
