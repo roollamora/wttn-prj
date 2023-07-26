@@ -3,6 +3,7 @@
 <head>
   <title>Global Lantern News - Israel-Palestine Conflict</title>
   <style>
+    /* CSS for Desktop Version */
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
@@ -30,7 +31,8 @@
       flex-wrap: wrap;
     }
     .news {
-      width: 100%;
+      width: calc(33.33% - 20px);
+      margin: 10px;
       border: 1px solid #ddd;
       background-color: #fff;
       padding: 20px;
@@ -54,14 +56,12 @@
       display: block;
     }
     .article-image {
-      width: 40%;
-      float: right;
-      margin-left: 20px;
+      width: 100%;
       margin-bottom: 10px;
       border-radius: 5px;
     }
     .article-content {
-      color: #666;
+      color: #333;
       line-height: 1.6;
     }
     .article-text {
@@ -76,27 +76,64 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      color: #333;
+      color: #666;
       font-weight: bold;
     }
     .bulletpoints li {
       margin-bottom: 5px;
       padding-left: 20px;
-    }
-    .bulletpoints li::before {
-      content: '\2022';
-      margin-right: 5px;
-      color: #333;
+      color: #666;
+      font-weight: bold;
     }
     .arrow-container {
       text-align: center;
-      margin: 20px 0;
+      margin: 40px 0;
     }
     .arrow {
-      font-size: 32px;
+      font-size: 36px;
       cursor: pointer;
       color: #d50000;
-      margin: 0 10px;
+      margin: 0 15px;
+    }
+
+    /* CSS for Mobile Version */
+    @media screen and (max-width: 767px) {
+      .news {
+        width: 100%;
+      }
+      .news.expanded {
+        width: 100%;
+      }
+      .article-image {
+        width: 100%;
+        float: none;
+        margin-left: 0;
+        margin-bottom: 10px;
+      }
+      .article-content {
+        color: #333;
+        line-height: 1.6;
+      }
+      .article-text {
+        display: none;
+        margin-top: 20px;
+      }
+      .article-text.expanded {
+        display: block;
+      }
+      .bulletpoints {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: #666;
+        font-weight: bold;
+      }
+      .bulletpoints li {
+        margin-bottom: 5px;
+        padding-left: 20px;
+        color: #666;
+        font-weight: bold;
+      }
     }
   </style>
   <script>
@@ -185,7 +222,7 @@
         <img class="article-image" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:eco,dpr_2.0/rockcms/2022-06/220630-israel-parliament-mb-0934-fb8c3a.jpg" alt="Article 3 Image">
         <div class="bulletpoints">
           <li>Israel is a democratic nation.</li>
-          <li>All Israelis have the right to vote and political participation, including Israelis who are ethnic minorities.</li>
+          <li>All Israelis have a right to vote and political participation, including Israelis who are ethnic minorities.</li>
           <li>Arab political parties in the Israeli parliament provide political representation for Arab-Israeli citizens.</li>
           <li>The Israeli government is actively working on addressing difficulties faced by minority communities, including Arabs.</li>
         </div>
