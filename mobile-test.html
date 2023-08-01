@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Global Lantern News - Israel-Palestine Conflict</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* CSS for Desktop Version */
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
@@ -31,16 +31,15 @@
       flex-wrap: wrap;
     }
     .news {
-      width: calc(33.33% - 20px);
-      margin: 10px;
+      width: 100%;
       border: 1px solid #ddd;
       background-color: #fff;
       padding: 20px;
       cursor: pointer;
       transition: all 0.3s ease;
+      margin-bottom: 20px;
     }
     .news.expanded {
-      flex-basis: 100%;
       width: 100%;
     }
     .headline {
@@ -61,16 +60,16 @@
       border-radius: 5px;
     }
     .article-content {
-      color: #333;
+      color: #000;
       line-height: 1.6;
     }
     .article-text {
       display: none;
       margin-top: 20px;
-      column-count: 2;
     }
     .article-text.expanded {
       display: block;
+      color: #000;
     }
     .bulletpoints {
       margin: 0;
@@ -78,62 +77,26 @@
       list-style: none;
       color: #666;
       font-weight: bold;
+      line-height: 1.6;
     }
     .bulletpoints li {
       margin-bottom: 5px;
       padding-left: 20px;
+    }
+    .bulletpoints li::before {
+      content: '\2022';
+      margin-right: 5px;
       color: #666;
-      font-weight: bold;
     }
     .arrow-container {
       text-align: center;
-      margin: 40px 0;
+      margin-top: 20px;
     }
     .arrow {
-      font-size: 36px;
+      font-size: 32px;
       cursor: pointer;
       color: #d50000;
       margin: 0 15px;
-    }
-
-    /* CSS for Mobile Version */
-    @media screen and (max-width: 767px) {
-      .news {
-        width: 100%;
-      }
-      .news.expanded {
-        width: 100%;
-      }
-      .article-image {
-        width: 100%;
-        float: none;
-        margin-left: 0;
-        margin-bottom: 10px;
-      }
-      .article-content {
-        color: #333;
-        line-height: 1.6;
-      }
-      .article-text {
-        display: none;
-        margin-top: 20px;
-      }
-      .article-text.expanded {
-        display: block;
-      }
-      .bulletpoints {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        color: #666;
-        font-weight: bold;
-      }
-      .bulletpoints li {
-        margin-bottom: 5px;
-        padding-left: 20px;
-        color: #666;
-        font-weight: bold;
-      }
     }
   </style>
   <script>
@@ -244,5 +207,4 @@
     <span class="arrow" onclick="toggleArticle('next')">&gt;</span>
   </div>
 </body>
-  
 </html>
