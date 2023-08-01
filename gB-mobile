@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Global Lantern News - Israelisch-Pal&auml;stinensischer Konflikt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #d50000;
+      padding: 10px 20px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+    }
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .main-title {
+      text-align: center;
+      font-size: 32px;
+      margin-top: 20px;
+    }
+    .news-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .news {
+      width: 100%;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+    .news.expanded {
+      width: 100%;
+    }
+    .headline {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+    .expand {
+      display: none;
+      margin-top: 20px;
+    }
+    .expanded .expand {
+      display: block;
+    }
+    .article-image {
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .article-content {
+      color: #000;
+      line-height: 1.6;
+    }
+    .article-text {
+      display: none;
+      margin-top: 20px;
+    }
+    .article-text.expanded {
+      display: block;
+      color: #000;
+    }
+    .bulletpoints {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #666;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+    .bulletpoints li {
+      margin-bottom: 5px;
+      padding-left: 20px;
+    }
+    .bulletpoints li::before {
+      content: '\2022';
+      margin-right: 5px;
+      color: #666;
+    }
+    .arrow-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .arrow {
+      font-size: 32px;
+      cursor: pointer;
+      color: #d50000;
+      margin: 0 15px;
+    }
+  </style>
+  <script>
+    function expandArticle(articleId) {
+      var articles = document.getElementsByClassName("news");
+      for (var i = 0; i < articles.length; i++) {
+        var article = articles[i];
+        if (article.id === articleId) {
+          article.classList.add("expanded");
+        } else {
+          article.classList.remove("expanded");
+        }
+      }
+    }
+    var currentIndex = 0;
+    function toggleArticle(direction) {
+      var articles = document.getElementsByClassName("news");
+      articles[currentIndex].classList.remove("expanded");
+
+      if (direction === "next") {
+        currentIndex = (currentIndex + 1) % articles.length;
+      } else if (direction === "prev") {
+        currentIndex = (currentIndex - 1 + articles.length) % articles.length;
+      }
+
+      articles[currentIndex].classList.add("expanded");
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <img src="https://i.postimg.cc/tC1cY5dp/Lantern.png" alt="Global Lantern News Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+    <h1>Global Lantern News</h1>
+  </div>
+
+  <h2 class="main-title">Israelisch-Pal&auml;stinensischer Konflikt</h2>
+
+  <div class="news-container">
+    <div class="news" id="article1" onclick="expandArticle('article1')">
+      <h2 class="headline">A. Siedlungsbau</h2>
+      <div class="expand">
+        <img class="article-image" src="https://www.reuters.com/resizer/hw1Po5kbuDX2J3SBlEzZbceANqA=/800x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/VQUNJTSONFJEHBVVLC3XCXTB74.jpg" alt="Article 1 Image">
+        <div class="bulletpoints">
+          <li>Israel baut seine Siedlungen im Westjordanland aus, um seine Sicherheit zu erh&ouml;hen und gleichzeitig Wohnraum f&uuml;r j&uuml;dische Gemeinden zu schaffen.</li>
+          <li>Das Westjordanland hat eine historische und religi&ouml;se Bedeutung f&uuml;r die j&uuml;dischen Gemeinden.</li>
+          <li>Sowohl Israelis als auch Pal&auml;stinenser profitieren wirtschaftlich vom Siedlungsbau.</li>
+          <li>Der Bau von Siedlungen steht im Einklang mit den israelischen Gesetzen.</li>
+        </div>
+        <div class="article-content">
+          <p>In den letzten Jahren wurde der Siedlungsbau im Westjordanland ausgeweitet, um die Sicherheit zu erh&ouml;hen und j&uuml;dischen Gemeinden ein Zuhause zu bieten.</p>
+<p>Diese Siedlungen spielen eine entscheidende Rolle bei der Gew&auml;hrleistung der Sicherheit und Verteidigung der israelischen B&uuml;rger. Sie fungieren als Pufferzone, die fr&uuml;hzeitig vor potenziellen Bedrohungen warnt und das Eindringen von Terroristen in unsere St&auml;dte verhindert. Es geht darum, unser Volk zu sch&uuml;tzen und den Frieden zu bewahren.</p>
+<p>Ein weiterer Aspekt ist die historische und religi&ouml;se Verbindung, die die j&uuml;dischen Gemeinden mit dem Westjordanland haben. Diese Gebiete haben f&uuml;r viele Israelis eine tiefe Bedeutung, mit biblischen Bez&uuml;gen und einem reichen Erbe, das Jahrhunderte zur&uuml;ckreicht. F&uuml;r sie stellen die Siedlungen eine nat&uuml;rliche Erweiterung des j&uuml;dischen Heimatlandes dar.</p>
+<p>Der Bau und die Entwicklung von Siedlungen bringen sowohl f&uuml;r Israelis als auch f&uuml;r Pal&auml;stinenser zahlreiche wirtschaftliche Vorteile mit sich. Sie schaffen Arbeitspl&auml;tze, beleben die lokale Wirtschaft und tragen zum allgemeinen Wohlstand der Region bei. Es geht darum, das Wirtschaftswachstum zu f&ouml;rdern und das Leben aller Bewohner zu verbessern.</p>
+        </div>
+        <div class="article-text">
+          <!-- No bullet points in this article -->
+        </div>
+      </div>
+    </div>
+
+    <div class="news" id="article2" onclick="expandArticle('article2')">
+      <h2 class="headline">B. Civilian Atrocities</h2>
+      <div class="expand">
+        <img class="article-image" src="https://icg-prod.s3.amazonaws.com/IsrPalReport-3Aug2021-1.jpg" alt="Article 2 Image">
+        <div class="bulletpoints">
+          <li>Israel takes great care not to harm civilian casualties, implementing strict protocols and conducting thorough investigations.</li>
+          <li>Israel is faced with different forms of security threats which make security a priority for the nation.</li>
+        </div>
+        <div class="article-content">
+          The Israeli-Palestinian conflict has sadly witnessed civilian casualties on both sides.
+          It is deeply saddening to witness civilian casualties in this conflict. Israel takes great care to avoid harm to non-combatants, implementing strict protocols and conducting thorough investigations into any incidents involving civilian casualties. Israel’s goal is always to minimize harm while defending citizens.
+          It is crucial to understand the threats faced by Israel, such as rocket attacks, suicide bombings, and other forms of terrorism. These threats necessitate measures to protect Israeli civilians and maintain the safety and security of the nation.
+          It is important to note the efforts made by Israel to protect civilians, including the implementation of advanced defense systems, early warning sirens, and bomb shelters to mitigate the impact of attacks. These measures aim to safeguard the lives of both Israelis and Palestinians.
+          Civilian atrocities in the Israeli-Palestinian conflict are a heartbreaking reality. It is crucial to understand the complexities of the situation and the efforts made by various stakeholders to minimize harm and protect innocent lives.
+        </div>
+        <div class="article-text">
+          <!-- No bullet points in this article -->
+        </div>
+      </div>
+    </div>
+
+    <div class="news" id="article3" onclick="expandArticle('article3')">
+      <h2 class="headline">C. Unequal Political Representation</h2>
+      <div class="expand">
+        <img class="article-image" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:eco,dpr_2.0/rockcms/2022-06/220630-israel-parliament-mb-0934-fb8c3a.jpg" alt="Article 3 Image">
+        <div class="bulletpoints">
+          <li>Israel is a democratic nation.</li>
+          <li>All Israelis have a right to vote and political participation, including Israelis who are ethnic minorities.</li>
+          <li>Arab political parties in the Israeli parliament provide political representation for Arab-Israeli citizens.</li>
+          <li>The Israeli government is actively working on addressing difficulties faced by minority communities, including Arabs.</li>
+        </div>
+        <div class="article-content">
+          Israel is a democratic nation that upholds the principles of equality and representation for all its citizens. Arab citizens of Israel have the right to vote, participate in political parties, and even hold seats in the Israeli Knesset. This demonstrates our commitment to inclusivity and fair representation within the political system.
+          It is important to acknowledge the presence of Arab political parties in the Israeli Knesset. These parties represent the interests of Arab citizens and contribute to the democratic process by voicing their concerns and advocating for their communities' rights. Their participation demonstrates the inclusive nature of Israeli democracy.
+          While there are ongoing challenges in achieving perfect political representation, Israel has made significant progress in recent years. Initiatives are being implemented to bridge gaps and address concerns raised by minority communities. This includes allocating resources for social and economic development in Arab-majority towns and promoting dialogue between different communities.
+          It is worth noting that despite the ongoing conflict, there have been instances of cooperation and engagement between Israeli and Palestinian officials. These interactions aim to build trust, foster dialogue, and explore possibilities for a peaceful resolution. Such efforts contribute to the broader goal of fair political representation for all parties involved.
+        </div>
+        <div class="article-text">
+          <!-- No bullet points in this article -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-container">
+    <span class="arrow" onclick="toggleArticle('prev')">&lt;</span>
+    <span class="arrow" onclick="toggleArticle('next')">&gt;</span>
+  </div>
+</body>
+</html>
